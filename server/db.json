@@ -1,14 +1,24 @@
 {
-    "doors": [
-        {
-            "id": "1",
-            "name": "Front Door",
-            "status": "open"
-        },
-        {
-            "id": "2",
-            "name": "Back Door",
-            "status": "closed"
-        }
-    ]
+  "doors": [
+      {
+          "id": "1",
+          "name": "Front Door",
+          "status": "open"
+      },
+      {
+          "id": "2",
+          "name": "Back Door",
+          "status": "closed"
+      },
+      {
+        "id": "3",
+        "name": "front back Door",
+        "status": "open"
+    },
+    {
+      "id": "4",
+      "name": "My kinda door",
+      "status": "closed"
+  }
+  ]
 }

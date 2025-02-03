@@ -1,3 +1,4 @@
+// server.js
 const path = require('node:path');
 const fs = require('node:fs');
 const express = require('express');
@@ -60,6 +61,17 @@ const saveData = (key, data) => {
     }
 };
 
+// Ensure db.json has the correct structure
+const initializeDB = () => {
+    const dbPath = path.resolve(__dirname, 'db.json');
+    if (!fs.existsSync(dbPath)) {
+        const initialData = { doors: [] };
+        fs.writeFileSync(dbPath, JSON.stringify(initialData, null, 2));
+    }
+};
+
+initializeDB();
+
 app.get('/doors', (_, res) => {
     const doorsData = loadData('doors');
     res.json(doorsData);
@@ -87,7 +99,7 @@ app.put('/doors/:id', (req, res) => {
     const doorsData = loadData('doors');
     const doorIndex = doorsData.findIndex((door) => door.id === req.params.id);
 
-    // dont allow to update 'id' field
+    // don't allow to update 'id' field
     delete req.body.id;
 
     if (doorIndex !== -1) {
@@ -113,5 +125,5 @@ app.delete('/doors/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 server is running on ${PORT}`);
+    console.log(`http://localhost:${PORT}`);
 });
